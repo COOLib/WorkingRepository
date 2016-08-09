@@ -15,7 +15,7 @@ import java.util.Map;
 public class CryptService {
 
     private AuthUserDao authUserDao = new HAuthUserDao();
-    private String secretKey = "abc123";
+    private String secretKey = "key123";
     private Map<String, Object> tokenData;
 
     public String someEncrypt(String authUserLogin, String password) throws Exception {
@@ -47,5 +47,16 @@ public class CryptService {
         else {
             throw new Exception("Authentication error");
         }
+    }
+
+    public AuthUser decrypt() {
+
+        AuthUser user = new AuthUser();
+        user.setId(Integer.parseInt(tokenData.get("authUser").toString()));
+        user.setLogin(tokenData.get("userLogin").toString());
+        user.setPass(tokenData.get("password").toString());
+        user.setSite(tokenData.get("site").toString());
+
+        return user;
     }
 }

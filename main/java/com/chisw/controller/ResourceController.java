@@ -70,13 +70,4 @@ public class ResourceController {
 
         return userDao.delete(Integer.parseInt(id));
     }
-
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public
-    @ResponseBody
-    String getLogin(@RequestBody String tokenBody) {
-
-        return null;
-    }
 }

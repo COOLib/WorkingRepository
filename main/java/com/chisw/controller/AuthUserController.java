@@ -24,7 +24,7 @@ public class AuthUserController {
     }
 
     @Secured("ROLE_USER")
-    @RequestMapping(value = "/auth", method = RequestMethod.POST)
+    @RequestMapping(value = "/auth", headers = "Content-Type: application/json", method = RequestMethod.POST)
     public @ResponseBody
     String getTokenByUserName(@RequestBody AuthUser authUser) throws Exception {
 
@@ -63,4 +63,11 @@ public class AuthUserController {
         }
     }
 
+    public void setAuthUserDao(AuthUserDao authUserDao) {
+        this.authUserDao = authUserDao;
+    }
+
+    public void setTokenDao(TokenDao tokenDao) {
+        this.tokenDao = tokenDao;
+    }
 }
